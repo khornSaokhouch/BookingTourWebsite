@@ -5,10 +5,14 @@ import { Toaster } from "@/components/ui/toaster";
 import { VerificationEmailPage } from "./pages/VerificationEmailPage";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./pages/DashboardPage"
 import { Button } from "./components/ui/button";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
+import HomePage from "./pages/HomePage";
+import GirdCard from "./components/Cards/Card"
+import Header from "./components/Header";
+import Swiper from "./components/swiper";
 
 const ProtectRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
@@ -47,7 +51,19 @@ function App() {
     <div>
       {user && <Button onClick={handleLogout}>Logout</Button>}
       <Routes>
-        <Route path="/" element={"Home"} />
+        <Route
+          path="/"
+          element={
+            <div>
+              <Header />
+              <Swiper />
+              <HomePage />
+              <GirdCard />
+              <HomePage />
+              <GirdCard />
+            </div>
+          }  
+        />
         <Route
           path="/signup"
           element={

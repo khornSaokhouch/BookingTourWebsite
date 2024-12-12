@@ -1,9 +1,9 @@
 import React from "react";
 
+
 const Card = ({ title, cookingTime, rating, image }) => {
   return (
-    
-    <div className="w-[320px] h-[340px] mx-auto bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300" >
+    <div className="w-[320px] h-[340px] mx-auto bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {/* Image Section */}
       <img
         src={image || "https://via.placeholder.com/300"}
@@ -73,22 +73,22 @@ const CardGrid = () => {
       image: "https://via.placeholder.com/300/5733FF",
     },
     {
-      title: "Vegetarian Pizza",
-      cookingTime: "20 min",
-      rating: 3.5,
-      image: "https://via.placeholder.com/300/5733FF",
+      title: "Spaghetti Bolognese",
+      cookingTime: "30 min",
+      rating: 4.5,
+      image: "https://via.placeholder.com/300/FF5733",
     },
     {
-      title: "Vegetarian Pizza",
-      cookingTime: "20 min",
-      rating: 3.5,
-      image: "https://via.placeholder.com/300/5733FF",
+      title: "Chicken Curry",
+      cookingTime: "40 min",
+      rating: 4,
+      image: "https://via.placeholder.com/300/FFBD33",
     },
     {
-      title: "Vegetarian Pizza",
-      cookingTime: "20 min",
-      rating: 3.5,
-      image: "https://via.placeholder.com/300/5733FF",
+      title: "Grilled Salmon",
+      cookingTime: "25 min",
+      rating: 5,
+      image: "https://via.placeholder.com/300/33FF57",
     },
     {
       title: "Vegetarian Pizza",
