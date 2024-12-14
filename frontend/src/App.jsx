@@ -2,17 +2,22 @@ import { Routes, Route, redirect, Navigate } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import { Toaster } from "@/components/ui/toaster";
-import { VerificationEmailPage } from "./pages/VerificationEmailPage";
 import { useAuthStore } from "./store/authStore";
 import { useEffect } from "react";
 import DashboardPage from "./pages/DashboardPage"
 import { Button } from "./components/ui/button";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import HomePage from "./pages/HomePage";
-import GirdCard from "./components/Cards/Card"
 import Header from "./components/Header";
-import Swiper from "./components/swiper";
+import TopCard from  "./components/Cards/TopCard"
+import TrendingCard from "./components/Cards/TrendingCard";
+import PopularCard from "./components/Cards/PopularCard"
+import WeekendCard from "./components/Cards/WeekendCard"
+import Services from "./components/Service";
+import Footer from "./components/Footer";
+import TraditionalCrad from "./components/Cards/TraditionalCard";
+import Profile from "./pages/Profile";
+
 
 const ProtectRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore();
@@ -54,14 +59,16 @@ function App() {
         <Route
           path="/"
           element={
-            <div>
-              <Header />
-              <Swiper />
-              <HomePage />
-              <GirdCard />
-              <HomePage />
-              <GirdCard />
-            </div>
+              <div>
+                <Header />
+                <TopCard />
+                <TrendingCard />
+                <PopularCard />
+                <WeekendCard />
+                <TraditionalCrad />
+                <Services />
+                <Footer />
+              </div>
           }  
         />
         <Route
@@ -80,7 +87,6 @@ function App() {
             </AuthenticatedUserRoute>
           }
         />
-        <Route path="/verify-email" element={<VerificationEmailPage />} />
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         <Route
           path="/forgot-password"
@@ -90,6 +96,7 @@ function App() {
             </AuthenticatedUserRoute>
           }
         />
+        <Route path="/profile" element={<Profile />} />
         <Route
           path="/dashboard"
           element={

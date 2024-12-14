@@ -1,215 +1,98 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
     <div>
-      {/* Header Section */}
-      <header className="flex items-center px-20 py-4 bg-FFFFFF border-b-2 border-b-3 border-gray-300 h-[110px] flex-wrap">
-        {/* Logo */}
-        <div className="logo mr-8">
-          <img src="./logo.png" alt="logo" className="w-20" />
-        </div>
-
-        {/* Navigation Menu (Desktop) */}
-        <nav className="hidden md:flex">
-          <ul className="flex space-x-12">
-            <li>
-              <Link to="/" className="text-lg text-black hover:text-blue-600">
-                HOME
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/article"
-                className="text-lg text-black hover:text-blue-600"
-              >
-                ARTICLE
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about-us"
-                className="text-lg text-black hover:text-blue-600"
-              >
-                ABOUT US
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* Search Bar (Mobile and Desktop) */}
-        <div className="search ml-auto  flex-1 md:flex-initial">
-          <form className="flex space-x-2 w-full md:w-auto">
-            <input
-              type="text"
-              placeholder="Search..."
-              name="search"
-              className="px-4 py-2 text-lg rounded-full bg-gray-200 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full md:w-[250px] placeholder-gray-500"
+      {/* Navbar Section */}
+      <header className="bg-white shadow-sm">
+        <div className="container mx-auto flex justify-between items-center py-4 px-20">
+          {/* Logo */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="/logo.png"
+              alt="Logo"
+              className="w-auto h-20 object-cover"
             />
-            <button
-              type="submit"
-              className="px-4 py-2 text-lg text-white bg-blue-500 rounded-full hover:bg-blue-600"
+          </div>
+
+          {/* Navigation Links */}
+          <nav className=" md:flex space-x-20 text-gray-700 font-medium text-lg px-20">
+            <a href="#" className="hover:text-blue-500">
+              Home
+            </a>
+            <a href="#" className="hover:text-blue-500">
+              Services
+            </a>
+            <a href="#" className="hover:text-blue-500">
+              Attractions
+            </a>
+          </nav>
+
+          {/* Right Section: Favourites + Become Supplier + Sign in */}
+          <div className="hidden md:flex items-center space-x-6 ml-auto text-lg">
+            <a
+              href="#"
+              className="text-gray-700 hover:text-blue-500 flex items-center space-x-6"
             >
-              <i className="fa fa-search"></i>
-            </button>
-          </form>
-        </div>
-
-        {/* Add Recipe Button (Desktop) */}
-        <div className="add_recipe ml-60 hidden md:block">
-          <a href="#" className="text-lg text-black hover:text-blue-600">
-            + ADD A RECIPE
-          </a>
-        </div>
-
-        {/* Right-side Buttons (Mobile: Hamburger + Login) */}
-        <div className="ml-auto flex items-center space-x-6">
-          {/* Hamburger Menu (Mobile) */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-black"
-          >
-            <i
-              className={`fa ${isMenuOpen ? "fa-times" : "fa-bars"} text-xl`}
-            />
-          </button>
-
-          {/* Login Button */}
-          <Link
-            to="/login"
-            className="bg-blue-500 text-white px-10 py-2 rounded-full text-sm hover:bg-blue-600"
-          >
-            LOGIN
-          </Link>
+              <i className="fas fa-heart"></i> {/* Favourites Icon */}
+              <span>Favourites</span>
+            </a>
+            <a
+              href="#"
+              className="text-gray-700 hover:text-blue-500 flex items-center space-x-2"
+            >
+              <i className="fas fa-briefcase"></i> {/* Supplier Icon */}
+              <span>Become a supplier</span>
+            </a>
+            <a
+              href="/login"
+              className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 flex items-center space-x-2"
+            >
+              <span>Sign in</span>
+            </a>
+          </div>
         </div>
       </header>
 
-      {/* Sub-menu Section (Desktop) */}
-      <div className="sub-menu hidden md:block bg-FFFFFF border-b-2 mb-5  py-5 px-20">
-        <ul className="flex space-x-8 px-6 ">
-          <li>
-            <Link to="/events" className="text-black hover:text-blue-600">
-              Events
-            </Link>
-          </li>
-          <li>
-            <Link to="/popular" className="text-black hover:text-blue-600">
-              Popular
-            </Link>
-          </li>
-          <li>
-            <Link to="/drinks" className="text-black hover:text-blue-600">
-              Drinks
-            </Link>
-          </li>
-          <li>
-            <Link to="/dessert" className="text-black hover:text-blue-600">
-              Dessert
-            </Link>
-          </li>
-          <li>
-            <Link to="/occasions" className="text-black hover:text-blue-600">
-              Occasions
-            </Link>
-          </li>
-          <li>
-            <Link to="/soup" className="text-black hover:text-blue-600">
-              Soup
-            </Link>
-          </li>
-          <li>
-            <Link to="/fried" className="text-black hover:text-blue-600">
-              Fried
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      {/* Mobile Menu (for smaller screens) */}
+      {/* Hero Section */}
       <div
-        className={`md:hidden ${
-          isMenuOpen ? "block" : "hidden"
-        } bg-gray-100 py-4`}
+        className="relative bg-cover bg-center h-[450px]"
+        style={{
+          backgroundImage: `url('../banner.png')`, // Replace with your image URL
+        }}
       >
-        <ul className="flex flex-col space-y-4 px-6">
-          <li>
-            <Link to="/" className="text-lg text-black hover:text-blue-600">
-              HOME
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/article"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              ARTICLE
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/about-us"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              ABOUT US
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/events"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              Events
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/popular"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              Popular
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/drinks"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              Drinks
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/dessert"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              Dessert
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/occasions"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              Occasions
-            </Link>
-          </li>
-          <li>
-            <Link to="/soup" className="text-lg text-black hover:text-blue-600">
-              Soup
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/fried"
-              className="text-lg text-black hover:text-blue-600"
-            >
-              Fried
-            </Link>
-          </li>
-        </ul>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+
+        {/* Hero Content */}
+        <div className="relative container mx-auto h-full flex flex-col justify-center items-center text-center px-4 py-20">
+          <h1 className="text-white text-4xl font-semibold mt-20">
+            Discover Amazing Places
+          </h1>
+
+          {/* Search Box */}
+          <div className="flex items-center bg-white rounded-full shadow-lg overflow-hidden w-full max-w-4xl mx-auto mt-20 ">
+            {/* Location Icon and Label */}
+            <div className="flex items-center px-6 text-gray-500 border-r border-gray-300 ">
+              <i className="fa fa-map-marker text-blue-500 text-lg"></i>
+              <span className="ml-3 font-medium">Location</span>
+            </div>
+
+            {/* Input Field */}
+            <input
+              type="text"
+              placeholder="Search by name of location"
+              className="flex-1 px-6 py-4 text-gray-700 text-base focus:outline-none placeholder-gray-400"
+            />
+
+            {/* Search Button */}
+            <button className="bg-blue-500 text-white px-8 py-4 text-base font-medium hover:bg-blue-600 transition-all">
+              Search
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

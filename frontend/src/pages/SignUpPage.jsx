@@ -19,7 +19,7 @@ export default function SignUpPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await signup(email, password, name);
-    navigate("/verify-email");
+    navigate("/profile");
   };
 
   return (

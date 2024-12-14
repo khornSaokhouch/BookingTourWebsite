@@ -1,69 +1,3 @@
-// import { useState } from "react";
-// import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import {
-//   Card,
-//   CardContent,
-//   CardDescription,
-//   CardFooter,
-//   CardHeader,
-//   CardTitle,
-// } from "@/components/ui/card";
-// import { useAuthStore } from "@/store/authStore";
-
-// export default function ForgotPasswordPage() {
-//   const [email, setEmail] = useState("");
-//   const { forgotPassword, message } = useAuthStore();
-//   async function onSubmit(e) {
-//     e.preventDefault();
-//     await forgotPassword(email);
-//   }
-
-//   return (
-//     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-//       <Card className="w-full max-w-md mx-auto shadow-lg rounded-lg">
-//         <CardHeader className="text-center">
-//           <CardTitle className="text-2xl font-bold text-gray-800">
-//             Forgot Password
-//           </CardTitle>
-//           <CardDescription className="text-sm text-gray-600 mt-2">
-//             Enter your email to receive a password reset link.
-//           </CardDescription>
-//         </CardHeader>
-//         <CardContent>
-//           <form onSubmit={onSubmit} className="space-y-4">
-//             <div>
-//               <Input
-//                 type="email"
-//                 placeholder="Enter your email"
-//                 value={email}
-//                 onChange={(e) => setEmail(e.target.value)} // Update email state on change
-//                 className="border-gray-300 focus:ring-2 focus:ring-blue-500"
-//               />
-//             </div>
-//             <Button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md">
-//               Reset Password
-//             </Button>
-//           </form>
-//         </CardContent>
-//         <CardFooter className="flex flex-col items-center mt-4">
-//           {message && (
-//             <p className="text-sm text-green-500 font-medium mb-2">{message}</p>
-//           )}
-//           <Button
-//             variant="link"
-//             className="text-blue-500 hover:underline text-sm"
-//             onClick={goBackToLogin} // When clicked, go back to the login page
-//           >
-//             Back to Login
-//           </Button>
-//         </CardFooter>
-//       </Card>
-//     </div>
-//   );
-// }
-
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -75,45 +9,87 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/authStore";
 
-export default function ForgotPasswordPage() {
-  const [email, setEmail] = useState("");
-  const { forgotPassword, message } = useAuthStore();
+export default function ResetPasswordPage() {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const { token } = useParams();
+  const { resetPassword, message } = useAuthStore();
+  const navigate = useNavigate();
+  const [successAlert, setSuccessAlert] = useState(false); // State for success alert
+
   async function onSubmit(e) {
     e.preventDefault();
-    await forgotPassword(email);
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const result = await resetPassword(token, password);
+    if (result) {
+      // Assuming resetPassword returns a truthy value on success
+      setSuccessAlert(true); // Show success alert
+      setTimeout(() => {
+        navigate("/login"); // Navigate to login after 2 seconds
+      }, 2000);
+    }
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
-      <CardHeader>
-        <CardTitle>Forgot Password</CardTitle>
-        <CardDescription>
-          Enter your email to reset your password.
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={onSubmit} className="space-y-6">
-          <Input
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          <Button type="submit" className="w-full">
+    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+      <Card className="w-full max-w-md mx-auto shadow-lg rounded-lg p-6">
+        <CardHeader>
+          <CardTitle className="text-xl font-semibold text-center">
             Reset Password
+          </CardTitle>
+          <CardDescription className="text-center text-gray-600">
+            Enter your new password below.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {successAlert && (
+            <div className="mb-4 p-4 text-green-700 bg-green-100 rounded">
+              Password reset successfully! Redirecting to login...
+            </div>
+          )}
+          <form onSubmit={onSubmit} className="space-y-6">
+            <Input
+              placeholder="Enter your password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <Input
+              placeholder="Confirm password"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            {message && (
+              <p className="text-sm text-green-500 text-center">{message}</p>
+            )}
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition duration-200"
+            >
+              Reset Password
+            </Button>
+          </form>
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <Button
+            variant="link"
+            className="px-0 text-blue-600 hover:underline"
+            onClick={() => navigate("/login")}
+          >
+            Back to Login
           </Button>
-        </form>
-      </CardContent>
-      <CardFooter className="flex justify-center">
-        {message && <p className="text-sm text-green-500">{message}</p>}
-        <Button variant="link" className="px-0">
-          Back to Login
-        </Button>
-      </CardFooter>
-    </Card>
+        </CardFooter>
+      </Card>
+    </div>
   );
 }
-
-

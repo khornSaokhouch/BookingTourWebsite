@@ -58,7 +58,7 @@ const CardGrid = () => {
       title: "Chicken Curry",
       cookingTime: "40 min",
       rating: 4,
-      image: "https://via.placeholder.com/300/FFBD33",
+      image: "/images/banner4.png",
     },
     {
       title: "Grilled Salmon",
