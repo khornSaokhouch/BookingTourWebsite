@@ -1,5 +1,5 @@
 {
-  "name": "cookbooks_nodejs",
+  "name": "bookingtour_nodejs",
   "version": "1.0.0",
   "type": "module",
   "main": "backend/index.js",
@@ -7,7 +7,7 @@
     "dev": "node backend/index.js"
   },
   "keywords": [],
-  "author": "Cookbooks",
+  "author": "BookingTour",
   "license": "ISC",
   "description": "",
   "dependencies": {

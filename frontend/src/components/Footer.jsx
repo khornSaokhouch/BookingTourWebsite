@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaFacebookF, FaLinkedinIn, FaTelegram } from 'react-icons/fa'; // Importing icons
+import { FaFacebookF, FaLinkedinIn, FaTelegram } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; // Importing Link for navigation
 
 const Footer = () => {
     return (
@@ -11,30 +12,29 @@ const Footer = () => {
                 backgroundPosition: 'center'
             }}
         >
-            <div className="container mx-auto px-20">
+            <div className="container mx-auto px-20 py-10">
                 <div className="flex flex-col md:flex-row justify-between items-start">
                     <div className="px-10 items-center mb-4 md:mb-0">
                         <img src="logo.png" alt="Logo" className="h-20 w-auto ml-5" />
-                        <p className='text-gray-600'>Travel helps companies
-                        manage payments easily.</p>
+                        <p className='text-gray-600'>Travel helps companies manage payments easily.</p>
                     </div>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-4 md:mb-0 ml-20">
                         <div>
-                            <h3 className="font-semibold text-lg">Company</h3>
-                            <ul className="text-gray-600">
-                                <li>About Us</li>
-                                <li>Contact Us</li>
-                                <li>FAQ</li>
-                                <li>Privacy Policy</li>
+                            <h3 className="font-semibold text-lg py-2">Company</h3>
+                            <ul className="text-gray-600 space-y-2">
+                                <li><Link to="/about">About Us</Link></li>
+                                <li><Link to="/contact">Contact Us</Link></li>
+                                <li><Link to="/faq">FAQ</Link></li>
+                                <li><Link to="/privacy">Privacy Policy</Link></li>
                             </ul>
                         </div>
                         <div>
-                            <h3 className="font-semibold text-lg">Destinations</h3>
-                            <ul className="text-gray-600">
-                                <li>Siem Reap</li>
-                                <li>Phnom Penh</li>
-                                <li>Kompong Cham</li>
-                                <li>Battambang</li>
+                            <h3 className="font-semibold text-lg py-2">Destinations</h3>
+                            <ul className="text-gray-600 space-y-2">
+                                <li><Link to="/siem-reap">Siem Reap</Link></li>
+                                <li><Link to="/phnom-penh">Phnom Penh</Link></li>
+                                <li><Link to="/kompong-cham">Kompong Cham</Link></li>
+                                <li><Link to="/battambang">Battambang</Link></li>
                             </ul>
                         </div>
                         <div>

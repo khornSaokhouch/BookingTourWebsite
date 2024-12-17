@@ -22,11 +22,11 @@ const Services = () => {
         return (
             <div className="px-10 bg-white py-5">
                 <h1 className="text-4xl font-bold text-center mb-6">We Offer Best Services</h1>
-                <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-6">
+                <div className="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-6 ">
                     {serviceData.map((service, index) => (
                         <div
                             key={index}
-                            className="border rounded-lg shadow-md p-4 text-center"
+                            className="border rounded-lg shadow-md p-4 text-center transition-transform transform hover:scale-105"
                             style={{ width: '300px', height: '280px' }} // Set fixed dimensions
                         >
                             <div className="text-6xl mb-4">{service.icon}</div>

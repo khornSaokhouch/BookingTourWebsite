@@ -39,9 +39,9 @@ const Traditional = () => {
             <div className="text-right mb-8">
                 <button className="text-blue-500 font-semibold">See All</button>
             </div>
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 ">
                 {tours.map((tour, index) => (
-                    <div key={index} className="border rounded-lg shadow-lg overflow-hidden relative">
+                    <div key={index} className="border rounded-lg shadow-lg overflow-hidden relative transition-transform transform hover:scale-105">
                         <img src={tour.image} alt={tour.title} className="w-full h-[300px] object-cover" />
                         <i className="fas fa-heart absolute top-2 right-2 text-red-500 bg-white p-1 rounded-full shadow-md"></i>
                         <div className="p-4">

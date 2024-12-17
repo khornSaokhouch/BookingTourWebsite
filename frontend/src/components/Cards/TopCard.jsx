@@ -34,7 +34,7 @@ const TravelCard = () => {
         {cardsData.map((card, index) => (
           <div
             key={index}
-            className="max-w-sm h-[450px] rounded-lg overflow-hidden shadow-lg bg-white flex flex-col"
+            className="max-w-sm h-[450px] rounded-lg overflow-hidden shadow-lg bg-white flex flex-col transition-transform transform hover:scale-105"
           >
             <img
               className="w-full h-[340px] object-cover"

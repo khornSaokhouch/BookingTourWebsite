@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faBriefcase } from "@fortawesome/free-solid-svg-icons";
 
+
 const Header = () => {
   return (
     <div>
@@ -19,13 +20,13 @@ const Header = () => {
 
           {/* Navigation Links */}
           <nav className=" md:flex space-x-20 text-gray-700 font-medium text-lg px-20">
-            <a href="#" className="hover:text-blue-500">
+            <a href="/" className="hover:text-blue-500">
               Home
             </a>
-            <a href="#" className="hover:text-blue-500">
+            <a href="./services" className="hover:text-blue-500">
               Services
             </a>
-            <a href="#" className="hover:text-blue-500">
+            <a href="./attractions" className="hover:text-blue-500">
               Attractions
             </a>
           </nav>
@@ -40,7 +41,7 @@ const Header = () => {
               <span>Favourites</span>
             </a>
             <a
-              href="#"
+              href="./become a supplier"
               className="text-gray-700 hover:text-blue-500 flex items-center space-x-2"
             >
               <i className="fas fa-briefcase"></i> {/* Supplier Icon */}
